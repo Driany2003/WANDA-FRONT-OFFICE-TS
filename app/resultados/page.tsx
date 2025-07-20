@@ -42,7 +42,7 @@ export default function ResultadosPage() {
           </Button>
           <h1 className="text-3xl font-bold text-gray-900">Resultados</h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-2">
           <span className="text-sm text-gray-600">Selecciona una opción</span>
           <DateRangeSelect onSelectChange={handleDateRangeChange} selectedValue={selectedDateRange} />
         </div>

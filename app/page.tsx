@@ -51,6 +51,7 @@ export default function HomePage() {
 
       {/* Contenido principal con padding de 50px */}
       <div className="p-[50px] space-y-12">
+
         {/* Animalitos Online Section */}
         <section className="space-y-6">
           <div className="flex items-center justify-between">

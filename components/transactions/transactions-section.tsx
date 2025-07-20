@@ -1,7 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { CreditCard, Upload, Download, HandCoins } from "lucide-react"
+import {
+  RecargasDegradadoIcon, RecargasIcon,
+  RetiroDegradadoIcon, RetiroIcon
+} from "@/components/icons"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DateRangeSelect } from "@/components/shared/date-range-select"
 import { DepositForm } from "./deposit-form"
@@ -23,11 +26,10 @@ export function TransactionsSection() {
     <div className="space-y-6 p-[50px]">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <CreditCard className="w-8 h-8 text-purple-600" />
+        <div>
           <h1 className="text-3xl font-bold text-gray-900">Transacciones</h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-2">
           <span className="text-sm text-gray-600">Rango de fecha</span>
           <DateRangeSelect onSelectChange={handleDateRangeChange} />
         </div>
@@ -35,19 +37,19 @@ export function TransactionsSection() {
 
       {/* Pestañas principales */}
       <Tabs value={activeTransactionTab} onValueChange={setActiveTransactionTab} className="w-full">
-        <TabsList className="grid w-full max-w-md grid-cols-2 mb-6 bg-gray-100 rounded-lg p-1">
+        <TabsList className="flex w-full justify-start gap-8 mb-6 bg-transparent border-none shadow-none">
           <TabsTrigger
             value="recargas"
-            className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white data-[state=active]:shadow-sm data-[state=active]:rounded-md"
+            className="flex items-center gap-3 text-base font-semibold text-gray-600 data-[state=active]:text-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:bg-clip-text data-[state=active]:from-[#DB086E] data-[state=active]:to-[#3A05DF] data-[state=active]:relative data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-gradient-to-r data-[state=active]:after:from-[#DB086E] data-[state=active]:after:to-[#3A05DF] bg-transparent border-none shadow-none hover:bg-transparent data-[state=active]:shadow-none"
           >
-            <Upload className="w-4 h-4" />
+            {activeTransactionTab === "recargas" ? <RecargasDegradadoIcon /> : <RecargasIcon />}
             Recargas
           </TabsTrigger>
           <TabsTrigger
             value="retiros"
-            className="flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white data-[state=active]:shadow-sm data-[state=active]:rounded-md"
+            className="flex items-center gap-3 text-base font-semibold text-gray-600 data-[state=active]:text-transparent data-[state=active]:bg-gradient-to-r data-[state=active]:bg-clip-text data-[state=active]:from-[#DB086E] data-[state=active]:to-[#3A05DF] data-[state=active]:relative data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-gradient-to-r data-[state=active]:after:from-[#DB086E] data-[state=active]:after:to-[#3A05DF] bg-transparent border-none shadow-none hover:bg-transparent data-[state=active]:shadow-none"
           >
-            <HandCoins className="w-4 h-4" />
+            {activeTransactionTab === "retiros" ? <RetiroDegradadoIcon /> : <RetiroIcon />}
             Retiros
           </TabsTrigger>
         </TabsList>
@@ -55,19 +57,23 @@ export function TransactionsSection() {
         {/* Contenido de Recargas */}
         <TabsContent value="recargas" className="space-y-6">
           {/* Sub-pestañas para Recargas */}
-          <div className="flex gap-4 border-b border-gray-200">
+          <div className="flex gap-2 mb-6">
             <button
               onClick={() => setActiveSubTab("depositos")}
-              className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
-                activeSubTab === "depositos" ? "bg-purple-600 text-white" : "text-gray-600 hover:text-purple-600"
+              className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
+                activeSubTab === "depositos" 
+                  ? "bg-[#890277] text-white shadow-md" 
+                  : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
             >
               Depósitos
             </button>
             <button
               onClick={() => setActiveSubTab("recargas")}
-              className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${
-                activeSubTab === "recargas" ? "bg-purple-600 text-white" : "text-gray-600 hover:text-purple-600"
+              className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
+                activeSubTab === "recargas" 
+                  ? "bg-[#890277] text-white shadow-md" 
+                  : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
             >
               Recargas
@@ -82,23 +88,23 @@ export function TransactionsSection() {
         {/* Contenido de Retiros */}
         <TabsContent value="retiros" className="space-y-6">
           {/* Sub-pestañas para Retiros */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 mb-6">
             <button
               onClick={() => setActiveWithdrawalTab("solicitud")}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
                 activeWithdrawalTab === "solicitud" 
-                  ? "bg-purple-600 text-white" 
-                  : "bg-gray-100 text-purple-600 hover:bg-gray-200"
+                  ? "bg-[#890277] text-white shadow-md" 
+                  : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
             >
               Solicitud
             </button>
             <button
               onClick={() => setActiveWithdrawalTab("retiros")}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
+              className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
                 activeWithdrawalTab === "retiros" 
-                  ? "bg-purple-600 text-white" 
-                  : "bg-gray-100 text-purple-600 hover:bg-gray-200"
+                  ? "bg-[#890277] text-white shadow-md" 
+                  : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
             >
               Retiros

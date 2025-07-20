@@ -40,15 +40,6 @@ export function HistoryTable({ data }: HistoryTableProps) {
             <RotateCcw className="w-5 h-5" />
           </Button>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">Rango de fecha</span>
-          <select className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
-            <option>Selecciona una opción</option>
-            <option>Última semana</option>
-            <option>Último mes</option>
-            <option>Últimos 3 meses</option>
-          </select>
-        </div>
       </div>
 
       {/* Tabla */}
@@ -57,7 +48,7 @@ export function HistoryTable({ data }: HistoryTableProps) {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]">
                   Operación
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -74,7 +65,7 @@ export function HistoryTable({ data }: HistoryTableProps) {
             <tbody className="bg-white divide-y divide-gray-200">
               {data.map((item) => (
                 <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.operation}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 min-w-[120px]">{item.operation}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.date}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">

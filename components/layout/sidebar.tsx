@@ -18,14 +18,14 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 bg-gradient-to-b from-gradient-start to-gradient-end text-white flex-shrink-0 hidden lg:flex flex-col">
-      <div className="flex items-center justify-center h-16">
-        <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
+    <aside className="w-69 bg-gradient-to-b from-gradient-start to-gradient-end text-white flex-shrink-0 hidden lg:flex flex-col" style={{ width: '276px' }}>
+      <div className="flex items-center justify-center h-75 mb-25 pt-10">
+        <Link href="/concursos" className="flex items-center gap-2 font-semibold">
           <Image 
-            src="/wanda-logo.svg" 
-            alt="Wanda Logo" 
-            width={48} 
-            height={48} 
+            src="/wc.png" 
+            alt="WC Logo" 
+            width={1200} 
+            height={1200} 
             className="drop-shadow-lg"
           />
           <span className="sr-only">Gaming Platform</span>

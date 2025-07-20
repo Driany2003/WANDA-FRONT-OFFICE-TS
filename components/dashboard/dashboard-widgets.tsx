@@ -31,7 +31,7 @@ export function DashboardWidgets({ stats }: DashboardWidgetsProps) {
             <div
               className="absolute top-0 left-0 w-full h-full rounded-full border-6 border-purple-600"
               style={{
-                clipPath: "polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%)", // Example for 50% fill
+                clipPath: "polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%)",
               }}
             ></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center">

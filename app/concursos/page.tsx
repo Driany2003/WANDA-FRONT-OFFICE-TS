@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react"
-import { Trophy, PawPrint, BarChart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { GameCard } from "@/components/sections/game-card"
 import { ResultCard } from "@/components/sections/result-card"
@@ -8,6 +7,8 @@ import { WinnerCard } from "@/components/sections/winner-card"
 import { HeroSection } from "@/components/sections/hero-section"
 import { HowToCompeteModal } from "@/components/modals/how-to-compete-modal"
 import { ANIMAL_GAMES, CONTEST_GAMES, RESULTS_DATA, WINNERS_DATA } from "@/lib/constants"
+import { AnimalitosIcon, ConcursosIcon, ResultadosIcon, GanadoresIcon } from "@/components/icons/concursos-icons"
+import { TiktokIcon } from "@/components/icons"
 import Link from "next/link"
 // Removed SelectionConfirmationModal import and related state/logic as it's moved to game detail page
 
@@ -18,19 +19,22 @@ export default function ConcursosPage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection /> 
 
       {/* Contenido principal con padding de 50px */}
       <div className="p-[50px] space-y-12">
+
+        
         {/* Animalitos Online */}
         <section>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <PawPrint className="w-6 h-6 text-purple-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Animalitos online</h2>
+              <AnimalitosIcon />
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent">Animalitos online</h2>
             </div>
             <Button
-              className="bg-purple-600 hover:bg-purple-700 text-white"
+              className="text-[#FBFBFB] font-semibold"
+              style={{ background: 'linear-gradient(135deg, #DB086E 0%, #3A05DF 100%)' }}
               onClick={() => setIsHowToCompeteModalOpen(true)}
             >
               ¿Cómo concursar?
@@ -47,8 +51,8 @@ export default function ConcursosPage() {
         {/* Concursos */}
         <section>
           <div className="flex items-center gap-3 mb-6">
-            <Trophy className="w-6 h-6 text-purple-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Concursos</h2>
+            <ConcursosIcon />
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent">Concursos</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -62,8 +66,8 @@ export default function ConcursosPage() {
         <section>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <BarChart className="w-6 h-6 text-purple-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Resultados</h2>
+              <ResultadosIcon />
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent">Resultados</h2>
             </div>
           </div>
 
@@ -75,8 +79,8 @@ export default function ConcursosPage() {
                 {" "}
                 {/* Added type query parameter */}
                 <Button
-                  variant="outline"
-                  className="text-purple-600 border-purple-600 hover:bg-purple-50 bg-transparent"
+                  className="text-[#FBFBFB] font-semibold"
+                  style={{ background: 'linear-gradient(135deg, #DB086E 0%, #3A05DF 100%)' }}
                 >
                   Más resultados
                 </Button>
@@ -99,8 +103,8 @@ export default function ConcursosPage() {
                 {" "}
                 {/* Added type query parameter */}
                 <Button
-                  variant="outline"
-                  className="text-purple-600 border-purple-600 hover:bg-purple-50 bg-transparent"
+                  className="text-[#FBFBFB] font-semibold"
+                  style={{ background: 'linear-gradient(135deg, #DB086E 0%, #3A05DF 100%)' }}
                 >
                   Más resultados
                 </Button>
@@ -119,8 +123,8 @@ export default function ConcursosPage() {
         {/* Ganadores */}
         <section>
           <div className="flex items-center gap-3 mb-6">
-            <Trophy className="w-6 h-6 text-purple-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Ganadores</h2>
+            <GanadoresIcon />
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent">Ganadores</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -134,7 +138,16 @@ export default function ConcursosPage() {
       {/* Modal "¿Cómo concursar?" */}
       <HowToCompeteModal isOpen={isHowToCompeteModalOpen} onClose={() => setIsHowToCompeteModalOpen(false)} />
 
-      {/* Removed SelectionConfirmationModal from here */}
+      {/* Botón flotante de TikTok */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button 
+          className="w-[82px] h-[82px] rounded-full shadow-xl transition-transform hover:scale-105 flex items-center justify-center bg-black"
+          style={{ boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)' }}
+          onClick={() => window.open('https://www.tiktok.com/@wanda', '_blank')}
+        >
+          <TiktokIcon size={40} className="text-white" />
+        </button>
+      </div>
     </div>
   )
 }

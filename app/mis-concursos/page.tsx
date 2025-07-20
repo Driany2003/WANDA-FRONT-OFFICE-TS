@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { User } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DateRangeSelect } from "@/components/shared/date-range-select"
 import { ContestTable } from "@/components/shared/contest-table"
 import { CONTEST_TABLE_DATA } from "@/lib/constants"
@@ -24,36 +23,61 @@ export default function MisConcursosPage() {
     <div className="space-y-6 p-[50px]">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <User className="w-8 h-8 text-purple-600" />
+        <div>
           <h1 className="text-3xl font-bold text-gray-900">Mis concursos</h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-2">
           <span className="text-sm text-gray-600">Rango de fecha</span>
           <DateRangeSelect onSelectChange={handleDateRangeChange} />
         </div>
       </div>
 
       {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full max-w-md grid-cols-3 mb-6">
-          <TabsTrigger value="en-proceso">En proceso</TabsTrigger>
-          <TabsTrigger value="cerrado">Cerrado</TabsTrigger>
-          <TabsTrigger value="todos">Todos</TabsTrigger>
-        </TabsList>
+      <div className="flex gap-2 mb-6">
+        <button
+          onClick={() => setActiveTab("en-proceso")}
+          className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
+            activeTab === "en-proceso"
+              ? "bg-[#890277] text-white shadow-md"
+              : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
+          }`}
+        >
+          En proceso
+        </button>
+        <button
+          onClick={() => setActiveTab("cerrado")}
+          className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
+            activeTab === "cerrado"
+              ? "bg-[#890277] text-white shadow-md"
+              : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
+          }`}
+        >
+          Cerrado
+        </button>
+        <button
+          onClick={() => setActiveTab("todos")}
+          className={`w-[90px] h-6 px-1 rounded-[50px] font-medium transition-all duration-200 text-sm ${
+            activeTab === "todos"
+              ? "bg-[#890277] text-white shadow-md"
+              : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
+          }`}
+        >
+          Todos
+        </button>
+      </div>
 
-        <TabsContent value="en-proceso">
-          <ContestTable data={enProceso} title="Concursos en proceso" />
-        </TabsContent>
-
-        <TabsContent value="cerrado">
-          <ContestTable data={cerrados} title="Concursos cerrados" />
-        </TabsContent>
-
-        <TabsContent value="todos">
-          <ContestTable data={todos} title="Todos los concursos" />
-        </TabsContent>
-      </Tabs>
+      {/* Contenido de las pestañas */}
+      {activeTab === "en-proceso" && (
+        <ContestTable data={enProceso} title="Concursos en proceso" />
+      )}
+      
+      {activeTab === "cerrado" && (
+        <ContestTable data={cerrados} title="Concursos cerrados" />
+      )}
+      
+      {activeTab === "todos" && (
+        <ContestTable data={todos} title="Todos los concursos" />
+      )}
     </div>
   )
 }

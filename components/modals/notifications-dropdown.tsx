@@ -11,6 +11,7 @@ import {
 import { Bell, DollarSign, Percent } from "lucide-react"
 import { NOTIFICATIONS_DATA } from "@/lib/constants"
 import { AllNotificationsModal } from "./all-notifications-modal"
+import { MensajeIcon } from "@/components/icons/header-icons"
 import type { Notification } from "@/types"
 
 export function NotificationsDropdown() {
@@ -44,7 +45,7 @@ export function NotificationsDropdown() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="relative rounded-full">
-            <Bell className="h-5 w-5" />
+            <MensajeIcon />
             {unreadCount > 0 && (
               <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 {unreadCount}

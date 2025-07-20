@@ -1,9 +1,10 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Search, Gift, ChevronRight } from "lucide-react"
+import { Search } from "lucide-react"
 import { MobileSidebar } from "@/components/mobile-sidebar"
-import { NotificationsDropdown } from "@/components/modals/notifications-dropdown" // Import the new component
+import { NotificationsDropdown } from "@/components/modals/notifications-dropdown"
+import { TrofeoIcon, WCIcon } from "@/components/icons/header-icons"
 
 export function Header() {
   return (
@@ -20,14 +21,17 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <NotificationsDropdown /> {/* New Notifications Dropdown */}
-          <Button variant="outline" size="sm">
-            <Gift className="w-4 h-4 mr-2" />
-            Concursar ahora
+          <NotificationsDropdown />
+          <Button variant="outline" size="sm" className="border-purple-500 text-purple-600 hover:bg-purple-50">
+            <TrofeoIcon />
+            <span className="ml-2">Concursar ahora</span>
           </Button>
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">15</span>
-            <ChevronRight className="w-4 h-4" />
+          <div className="flex items-center gap-2 bg-yellow-400 rounded-full px-3 py-1">
+            <WCIcon />
+            <span className="text-sm font-medium text-gray-800">15</span>
+            <svg className="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
       </div>

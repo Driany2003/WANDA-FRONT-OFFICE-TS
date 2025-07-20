@@ -1,4 +1,4 @@
-import { Trophy, User, CreditCard, BarChart3 } from "lucide-react"
+import { Concurso, ConcursoBlanco, misConcursos, misConcursosBlanco, transacciones, transaccionesBlanco, dashboard, dashboardBlanco, miCuenta, miCuentaBlanco, CerrarSesion } from "@/components/icons/sidebar-icons"
 import type {
   SidebarItem,
   PaymentMethod,
@@ -15,11 +15,11 @@ import type {
 } from "@/types"
 
 export const SIDEBAR_ITEMS: SidebarItem[] = [
-  { id: "concursos", label: "Concursos", icon: Trophy, href: "/concursos" },
-  { id: "mis-concursos", label: "Mis concursos", icon: User, href: "/mis-concursos" },
-  { id: "transacciones", label: "Transacciones", icon: CreditCard, href: "/transacciones" },
-  { id: "dashboard", label: "Dashboard", icon: BarChart3, href: "/dashboard" },
-  { id: "mi-cuenta", label: "Mi cuenta", icon: User, href: "/mi-cuenta" },
+  { id: "concursos", label: "Concursos", icon: Concurso, iconBlanco: ConcursoBlanco, href: "/concursos" },
+  { id: "mis-concursos", label: "Mis concursos", icon: misConcursos, iconBlanco: misConcursosBlanco, href: "/mis-concursos" },
+  { id: "transacciones", label: "Transacciones", icon: transacciones, iconBlanco: transaccionesBlanco, href: "/transacciones" },
+  { id: "dashboard", label: "Dashboard", icon: dashboard, iconBlanco: dashboardBlanco, href: "/dashboard" },
+  { id: "mi-cuenta", label: "Mi cuenta", icon: miCuenta, iconBlanco: miCuentaBlanco, href: "/mi-cuenta" },
 ]
 
 export const PAYMENT_METHODS: PaymentMethod[] = [
@@ -79,10 +79,10 @@ export const DASHBOARD_STATS: DashboardStats = {
 }
 
 export const CONTEST_TABLE_DATA: ContestTableData[] = [
-  { id: 1, fecha: "25/09/2024", concurso: "La gran ruleta", estado: "En proceso", participantes: 156 },
-  { id: 2, fecha: "24/09/2024", concurso: "Animalitos", estado: "Cerrado", participantes: 89 },
-  { id: 3, fecha: "23/09/2024", concurso: "Carritos", estado: "Cerrado", participantes: 234 },
-  { id: 4, fecha: "22/09/2024", concurso: "Cartas", estado: "Cerrado", participantes: 67 },
+  { id: 1, fecha: "14/10/2024", concurso: "Carritos", estado: "En proceso", wcUsadas: 10, recompensa: 12, numOpciones: 2, participantes: 156 },
+  { id: 2, fecha: "10/10/2024", concurso: "Cartas", estado: "En proceso", wcUsadas: 15, recompensa: 20, numOpciones: 3, participantes: 89 },
+  { id: 3, fecha: "08/10/2024", concurso: "Frutas", estado: "Cerrado", wcUsadas: 5, recompensa: 10, numOpciones: 1, participantes: 234 },
+  { id: 4, fecha: "04/10/2024", concurso: "Carritos", estado: "Cerrado", wcUsadas: 10, recompensa: 15, numOpciones: 2, participantes: 67 },
 ]
 
 export const ANIMAL_GAMES: GameCardData[] = [
@@ -538,9 +538,9 @@ export const PROFILE_DATA: ProfileData = {
   tiktokUser: "usuario_tiktok",
   name: "Jesús",
   lastName: "López",
-  documentId: "DNI 00000000",
+  documentId: "00000000",
   birthDate: "00/00/0000",
-  cellphone: "+51 938 000 000",
+  cellphone: "938 000 000",
   nationality: "Peruana",
   city: "Lima",
   district: "Miraflores",

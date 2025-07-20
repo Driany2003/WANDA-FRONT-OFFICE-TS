@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft } from "lucide-react"
+import { ChevronLeft, Trophy, PawPrint } from "lucide-react"
 import Image from "next/image"
 import { ANIMAL_GAMES, CONTEST_GAMES } from "@/lib/constants"
 import { Card } from "@/components/ui/card"

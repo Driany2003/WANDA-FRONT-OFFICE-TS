@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import type { ContestTableData } from "@/types"
 import { DateRangeSelect } from "./date-range-select"
+import { StatusIcon } from "@/components/ui/status-icon"
+import { WcBadge } from "@/components/ui/wc-badge"
 
 interface ContestTableProps {
   data: ContestTableData[]
@@ -13,17 +14,6 @@ interface ContestTableProps {
 }
 
 export function ContestTable({ data, title = "Historial" }: ContestTableProps) {
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case "En proceso":
-        return <Badge className="bg-blue-100 text-blue-800 border-blue-200">En proceso</Badge>
-      case "Cerrado":
-        return <Badge className="bg-red-100 text-red-800 border-red-200">Cerrado</Badge>
-      default:
-        return <Badge variant="secondary">{status}</Badge>
-    }
-  }
-
   return (
     <div className="space-y-6">
       {/* Header con filtro de fecha */}
@@ -42,26 +32,40 @@ export function ContestTable({ data, title = "Historial" }: ContestTableProps) {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Fecha
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Concurso
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Estado
+                  Fecha
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Participantes
+                  WC usadas
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Recompensa
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  N° de opciones
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Estado
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {data.map((item) => (
                 <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.fecha}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.concurso}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(item.estado)}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{item.participantes || "-"}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.fecha}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <WcBadge value={item.wcUsadas} />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <WcBadge value={item.recompensa} />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{item.numOpciones}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <StatusIcon status={item.estado} />
+                  </td>
                 </tr>
               ))}
             </tbody>

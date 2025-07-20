@@ -2,6 +2,7 @@ export interface SidebarItem {
   id: string
   label: string
   icon: any
+  iconBlanco?: any
   href: string
 }
 
@@ -41,6 +42,9 @@ export interface ContestTableData {
   fecha: string
   concurso: string
   estado: string
+  wcUsadas: number
+  recompensa: number
+  numOpciones: number
   participantes?: number
 }
 

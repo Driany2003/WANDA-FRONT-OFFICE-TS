@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { LogOut } from "lucide-react"
+import { CerrarSesion } from "@/components/icons/sidebar-icons"
 import { SIDEBAR_ITEMS } from "@/lib/constants"
 
 export function SidebarNav() {
@@ -11,20 +11,21 @@ export function SidebarNav() {
 
   return (
     <>
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-5" style={{ paddingTop: '72px' }}>
         <nav className="space-y-2">
           {SIDEBAR_ITEMS.map((item) => {
             const Icon = item.icon
+            const IconBlanco = item.iconBlanco
             const isActive = pathname === item.href
             return (
               <Link
                 key={item.id}
                 href={item.href}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive ? "bg-white text-purple-600 shadow-md" : "text-white/80 hover:bg-white/10 hover:text-white"
+                className={`w-full flex items-center gap-2.5 px-5 py-5 transition-colors ${
+                  isActive ? "bg-white text-purple-600 shadow-md rounded-2xl" : "text-white/80 hover:bg-white/10 hover:text-white rounded-lg"
                 }`}
               >
-                <Icon className="w-5 h-5" />
+                {isActive ? <Icon /> : (IconBlanco ? <IconBlanco /> : <Icon />)}
                 <span>{item.label}</span>
               </Link>
             )
@@ -32,10 +33,10 @@ export function SidebarNav() {
         </nav>
       </div>
 
-      <div className="p-6">
-        <button className="flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white transition-colors">
-          <LogOut className="w-5 h-5" />
-          <span>Cerrar Sesión</span>
+      <div className="p-5" style={{ paddingTop: '72px' }}>
+        <button className="w-full flex items-center gap-2.5 px-5 py-5 transition-colors rounded-2xl" style={{ backgroundColor: '#EBE6FC' }}>
+          <CerrarSesion />
+          <span className="bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent font-semibold">Cerrar Sesión</span>
         </button>
       </div>
     </>
