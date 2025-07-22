@@ -22,11 +22,11 @@ export function SidebarNav() {
                 key={item.id}
                 href={item.href}
                 className={`w-full flex items-center gap-2.5 px-5 py-5 transition-colors ${
-                  isActive ? "bg-white text-purple-600 shadow-md rounded-2xl" : "text-white/80 hover:bg-white/10 hover:text-white rounded-lg"
+                  isActive ? "bg-white shadow-md rounded-2xl" : "text-white/80 hover:bg-white/10 hover:text-white rounded-lg"
                 }`}
               >
                 {isActive ? <Icon /> : (IconBlanco ? <IconBlanco /> : <Icon />)}
-                <span>{item.label}</span>
+                <span className={isActive ? "bg-gradient-to-r from-[#DB086E] to-[#3A05DF] bg-clip-text text-transparent font-semibold" : ""}>{item.label}</span>
               </Link>
             )
           })}

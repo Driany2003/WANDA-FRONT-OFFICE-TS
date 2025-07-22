@@ -10,21 +10,24 @@ interface ResultCardProps {
 
 export function ResultCard({ result }: ResultCardProps) {
   return (
-    <Card className="w-full rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-      <CardContent className="p-4 flex flex-col items-center text-center">
-        <div className="relative w-24 h-24 mb-3">
-          <Image
-            src={result.image || "/placeholder.svg"}
-            alt={result.title}
-            layout="fill"
-            objectFit="contain"
-            className="rounded-full"
-          />
+    <Card className="w-[204px] h-[200px] rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div className="relative w-full h-full overflow-hidden">
+        <Image
+          src={result.image || "/placeholder.svg"}
+          alt={result.title}
+          fill
+          className="object-cover w-full h-full"
+        />
+        {/* Título en la cabecera */}
+        <div className="absolute top-0 left-0 right-0 bg-[#FEFEFE] text-[#333333] px-3 py-2">
+          <h3 className="text-base font-medium">{result.title}</h3>
         </div>
-        <h3 className="text-md font-semibold text-gray-900 mb-1">{result.title}</h3>
-        <p className="text-sm text-gray-700 font-bold mb-2">{result.amount}</p>
-        {result.time && <p className="text-xs text-gray-500">{result.time}</p>}
-      </CardContent>
+        {result.time && (
+          <div className="absolute bottom-2 left-2 bg-white text-[#890277] text-xs px-3 py-1 rounded-full font-medium">
+            {result.time}
+          </div>
+        )}
+      </div>
     </Card>
   )
 }

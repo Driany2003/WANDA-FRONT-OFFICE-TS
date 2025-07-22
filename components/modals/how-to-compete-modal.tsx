@@ -4,6 +4,7 @@ import { CustomModal } from "@/components/shared/custom-modal"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface HowToCompeteModalProps {
   isOpen: boolean
@@ -11,6 +12,7 @@ interface HowToCompeteModalProps {
 }
 
 export function HowToCompeteModal({ isOpen, onClose }: HowToCompeteModalProps) {
+  const router = useRouter()
   const [isLargeScreen, setIsLargeScreen] = useState(false)
 
   useEffect(() => {
@@ -121,6 +123,10 @@ export function HowToCompeteModal({ isOpen, onClose }: HowToCompeteModalProps) {
             Cancelar
           </Button>
           <Button 
+            onClick={() => {
+              onClose()
+              router.push('/transacciones')
+            }}
             className="px-9 sm:px-6 py-2 sm:py-2 text-white shadow-md text-sm sm:text-base"
             style={{
               background: 'linear-gradient(90deg, #DB086E 0%, #3A05DF 100%)'
