@@ -13,23 +13,30 @@ export function StatusIcon({ status, className = "" }: StatusIconProps) {
       case "En proceso":
         return {
           icon: "icon-en-proceso",
-          bgColor: "bg-purple-600",
-          textColor: "text-white",
-          borderColor: "border-purple-600"
+          bgColor: "bg-[#6137E5]",
+          textColor: "text-[#FBFBFB]",
+          borderColor: "border-[#6137E5]",
+          hoverBgColor: "hover:bg-[#4A2BB8]",
+          hoverBorderColor: "hover:border-[#4A2BB8]"
         }
       case "Cerrado":
         return {
           icon: "icon-cerrado",
-          bgColor: "bg-white",
-          textColor: "text-purple-600",
-          borderColor: "border-purple-600"
+          bgColor: "bg-[#FBFBFB]",
+          textColor: "text-[#6137E5]",
+          borderColor: "border-[#6137E5]",
+          hoverBgColor: "hover:bg-[#6137E5]",
+          hoverTextColor: "hover:text-[#FBFBFB]",
+          hoverBorderColor: "hover:border-[#6137E5]"
         }
       default:
         return {
           icon: "icon-en-proceso",
           bgColor: "bg-gray-100",
           textColor: "text-gray-600",
-          borderColor: "border-gray-200"
+          borderColor: "border-gray-200",
+          hoverBgColor: "hover:bg-gray-200",
+          hoverBorderColor: "hover:border-gray-300"
         }
     }
   }
@@ -38,12 +45,12 @@ export function StatusIcon({ status, className = "" }: StatusIconProps) {
 
   return (
     <Badge 
-      className={`${config.bgColor} ${config.textColor} ${config.borderColor} border px-3 py-1 rounded-full flex items-center gap-2 ${className}`}
+      className={`${config.bgColor} ${config.textColor} ${config.borderColor} ${config.hoverBgColor} ${config.hoverBorderColor} ${config.hoverTextColor || ''} border px-3 py-1 rounded-full flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer ${className}`}
     >
       <svg className="w-4 h-4">
         <use href={`/iconos.svg#${config.icon}`} />
       </svg>
-      {status}
+      <span className="text-center font-medium">{status}</span>
     </Badge>
   )
 } 

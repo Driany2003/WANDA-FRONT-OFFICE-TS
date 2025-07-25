@@ -18,7 +18,7 @@ export function DateRangeModal({ isOpen, onClose, onSelectDates }: DateRangeModa
   const [selectedDates, setSelectedDates] = useState<Date[]>([])
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date())
 
-  // Reset selected dates when modal closes
+  
   const handleClose = () => {
     setSelectedDates([])
     onClose()

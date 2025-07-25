@@ -43,45 +43,55 @@ export function HistoryTable({ data }: HistoryTableProps) {
       </div>
 
       {/* Tabla */}
-      <Card className="overflow-hidden">
+      <div className="overflow-hidden rounded-t-xl" style={{ boxShadow: '0 4px 20px rgba(219, 8, 110, 0.15)' }}>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-[#FEFEFE]" style={{ boxShadow: '0 2px 10px rgba(219, 8, 110, 0.08)' }}>
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider min-w-[120px]">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider min-w-[120px]">
                   Operación
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Fecha
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Cantidad WC
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Estado
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {data.map((item) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 min-w-[120px]">{item.operation}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.date}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center gap-2">
+            <tbody className="bg-[#FBFBFB]">
+              {data.map((item, index) => (
+                <tr 
+                  key={item.id} 
+                  className="bg-[#FBFBFB]"
+                  style={{ 
+                    borderBottom: index < data.length - 1 ? '1px solid #A4A4A4' : 'none'
+                  }}
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center min-w-[120px]">{item.operation}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center">{item.date}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <div className="flex justify-center items-center gap-2">
                       <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
                         <span className="text-xs font-bold text-white">WC</span>
                       </div>
-                      <span className="text-sm font-medium text-gray-900">{item.amount}</span>
+                      <span className="text-sm font-normal text-gray-900">{item.amount}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(item.status)}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <div className="flex justify-center">
+                      {getStatusBadge(item.status)}
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }

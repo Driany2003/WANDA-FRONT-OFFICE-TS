@@ -68,15 +68,15 @@ export default function MisConcursosPage() {
 
       {/* Contenido de las pestañas */}
       {activeTab === "en-proceso" && (
-        <ContestTable data={enProceso} title="Concursos en proceso" />
+        <ContestTable data={enProceso} title="Concursos en proceso" showStatus={false} showReward={true} />
       )}
       
       {activeTab === "cerrado" && (
-        <ContestTable data={cerrados} title="Concursos cerrados" />
+        <ContestTable data={cerrados} title="Concursos cerrados" showStatus={false} showReward={true} />
       )}
       
       {activeTab === "todos" && (
-        <ContestTable data={todos} title="Todos los concursos" />
+        <ContestTable data={todos} title="Todos los concursos" showStatus={true} showReward={false} />
       )}
     </div>
   )

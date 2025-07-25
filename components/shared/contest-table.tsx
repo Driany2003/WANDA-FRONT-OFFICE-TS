@@ -7,13 +7,16 @@ import type { ContestTableData } from "@/types"
 import { DateRangeSelect } from "./date-range-select"
 import { StatusIcon } from "@/components/ui/status-icon"
 import { WcBadge } from "@/components/ui/wc-badge"
+import { WCIcon } from "@/components/icons/mis-concursos-icons"
 
 interface ContestTableProps {
   data: ContestTableData[]
   title?: string
+  showStatus?: boolean
+  showReward?: boolean
 }
 
-export function ContestTable({ data, title = "Historial" }: ContestTableProps) {
+export function ContestTable({ data, title = "Historial", showStatus = false, showReward = true }: ContestTableProps) {
   return (
     <div className="space-y-6">
       {/* Header con filtro de fecha */}
@@ -26,52 +29,72 @@ export function ContestTable({ data, title = "Historial" }: ContestTableProps) {
       </div>
 
       {/* Tabla */}
-      <Card className="overflow-hidden">
+      <div className="overflow-hidden rounded-t-xl" style={{ boxShadow: '0 4px 20px rgba(219, 8, 110, 0.15)' }}>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-[#FEFEFE]" style={{ boxShadow: '0 2px 10px rgba(219, 8, 110, 0.08)' }}>
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Concurso
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Fecha
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   WC usadas
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Recompensa
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                {showReward && (
+                  <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                    Recompensa
+                  </th>
+                )}
+                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
                   N° de opciones
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Estado
-                </th>
+                {showStatus && (
+                  <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                    Estado
+                  </th>
+                )}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {data.map((item) => (
-                <tr key={item.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.concurso}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.fecha}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <WcBadge value={item.wcUsadas} />
+            <tbody className="bg-[#FBFBFB]">
+              {data.map((item, index) => (
+                <tr 
+                  key={item.id} 
+                  className="bg-[#FBFBFB]"
+                  style={{ 
+                    borderBottom: index < data.length - 1 ? '1px solid #A4A4A4' : 'none'
+                  }}
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center">{item.concurso}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center">{item.fecha}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-center">
+                    <div className="flex justify-center">
+                      <WCIcon value={item.wcUsadas} />
+                    </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <WcBadge value={item.recompensa} />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{item.numOpciones}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <StatusIcon status={item.estado} />
-                  </td>
+                  {showReward && (
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <div className="flex justify-center">
+                        <WCIcon value={item.recompensa} />
+                      </div>
+                    </td>
+                  )}
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-600 text-center">{item.numOpciones}</td>
+                  {showStatus && (
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <div className="flex justify-center">
+                        <StatusIcon status={item.estado} />
+                      </div>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
     </div>
   )
 }
