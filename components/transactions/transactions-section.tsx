@@ -19,15 +19,16 @@ export function TransactionsSection() {
 
   const handleDateRangeChange = (value: string) => {
     console.log("Selected date range for Transactions:", value)
-    // Implement filtering logic here based on the selected value
+  
   }
-
+  
+  
   return (
     <div className="space-y-6 p-[50px]">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Transacciones</h1>
+          <h1 className="text-3xl font-bold text-gray-900" >Transacciones</h1>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-sm text-gray-600">Rango de fecha</span>
@@ -65,6 +66,9 @@ export function TransactionsSection() {
                   ? "bg-[#890277] text-white shadow-md" 
                   : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
+              style={{
+                boxShadow: activeSubTab === "depositos" ? '0 4px 20px rgba(219, 8, 110, 0.15)' : '0 2px 8px rgba(219, 8, 110, 0.15)'
+              }}
             >
               Depósitos
             </button>
@@ -75,6 +79,9 @@ export function TransactionsSection() {
                   ? "bg-[#890277] text-white shadow-md" 
                   : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
+              style={{
+                boxShadow: activeSubTab === "recargas" ? '0 4px 20px rgba(219, 8, 110, 0.15)' : '0 2px 8px rgba(219, 8, 110, 0.15)'
+              }}
             >
               Recargas
             </button>
@@ -96,6 +103,9 @@ export function TransactionsSection() {
                   ? "bg-[#890277] text-white shadow-md" 
                   : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
+              style={{
+                boxShadow: activeWithdrawalTab === "solicitud" ? '0 4px 20px rgba(219, 8, 110, 0.15)' : '0 2px 8px rgba(219, 8, 110, 0.15)'
+              }}
             >
               Solicitud
             </button>
@@ -106,6 +116,9 @@ export function TransactionsSection() {
                   ? "bg-[#890277] text-white shadow-md" 
                   : "bg-[#FEFEFE] text-gray-600 hover:text-gray-800 border border-gray-200"
               }`}
+              style={{
+                boxShadow: activeWithdrawalTab === "retiros" ? '0 4px 20px rgba(219, 8, 110, 0.15)' : '0 2px 8px rgba(219, 8, 110, 0.15)'
+              }}
             >
               Retiros
             </button>

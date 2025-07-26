@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { WCIcon } from "@/components/icons/header-icons"
 
 export function RechargeHistory() {
   return (
@@ -20,47 +21,43 @@ export function RechargeHistory() {
           <table className="w-full">
             <thead className="bg-[#FEFEFE]" style={{ boxShadow: '0 2px 10px rgba(219, 8, 110, 0.08)' }}>
               <tr>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Fecha
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Recargas
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Estado
                 </th>
               </tr>
             </thead>
             <tbody className="bg-[#FBFBFB]">
               <tr className="bg-[#FBFBFB]" style={{ borderBottom: '1px solid #A4A4A4' }}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center">25/09/2024</td>
+                <td className="px-6 py-4 whitespace-nowrap text-[14px] font-normal text-[#333333] text-center">25/09/2024</td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <div className="flex justify-center items-center gap-2">
-                    <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                      <span className="text-xs font-bold text-white">WC</span>
-                    </div>
-                    <span className="text-sm font-normal text-gray-900">20</span>
+                    <WCIcon />
+                    <span className="text-[14px] font-normal text-[#333333]">20</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <div className="flex justify-center">
-                    <Badge className="bg-blue-100 text-blue-800 border-blue-200">En proceso</Badge>
+                    <Badge className="bg-[#FBFBFB] text-[#6137E5] border border-[#6137E5] hover:bg-[#FBFBFB] hover:text-[#6137E5] hover:border-[#6137E5]">En proceso</Badge>
                   </div>
                 </td>
               </tr>
               <tr className="bg-[#FBFBFB]">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-900 text-center">24/09/2024</td>
+                <td className="px-6 py-4 whitespace-nowrap text-[14px] font-normal text-[#333333] text-center">24/09/2024</td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <div className="flex justify-center items-center gap-2">
-                    <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                      <span className="text-xs font-bold text-white">WC</span>
-                    </div>
-                    <span className="text-sm font-normal text-gray-900">40</span>
+                    <WCIcon />
+                    <span className="text-[14px] font-normal text-[#333333]">40</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <div className="flex justify-center">
-                    <Badge className="bg-purple-100 text-purple-800 border-purple-200">Aprobado</Badge>
+                    <Badge className="bg-[#6137E5] text-[#FBFBFB] border border-[#6137E5] hover:bg-[#6137E5] hover:text-[#FBFBFB] hover:border-[#6137E5]">Aprobado</Badge>
                   </div>
                 </td>
               </tr>

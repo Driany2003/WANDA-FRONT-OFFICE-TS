@@ -51,7 +51,9 @@ export function DateRangeSelect({ onSelectChange, selectedValue }: DateRangeSele
   return (
     <>
       <Select onValueChange={handleValueChange} value={selectedDates.startDate && selectedDates.endDate ? "ultimos-3-meses" : selectedValue}>
-        <SelectTrigger className="w-full h-full gap-2 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+        <SelectTrigger className="w-full h-full gap-2 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" style={{
+          boxShadow: '0 2px 8px rgba(219, 8, 110, 0.15)'
+        }}>
           <SelectValue placeholder="Selecciona una opción">
             {getDisplayValue()}
           </SelectValue>

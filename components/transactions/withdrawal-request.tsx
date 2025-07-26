@@ -13,7 +13,7 @@ const PAYMENT_METHODS = [
     id: 1,
     name: "Billetera móvil - Yape 938 000 000",
     type: "Yape",
-    logo: "/placeholder.svg",
+    logo: "/yape.png",
     time: "Depósito efectivo en 1 hora",
     color: "bg-green-500"
   },
@@ -21,7 +21,7 @@ const PAYMENT_METHODS = [
     id: 2,
     name: "Cuenta bancaria - BCP ************08",
     type: "BCP",
-    logo: "/placeholder.svg",
+    logo: "/bcp.png",
     time: "Depósito efectivo en 4 horas",
     color: "bg-blue-500"
   }
@@ -50,18 +50,18 @@ export function WithdrawalRequest() {
         <h3 className="text-xl font-semibold text-gray-900 mb-4">Métodos de pago registrados</h3>
         <div className="space-y-3">
           {PAYMENT_METHODS.map((method) => (
-            <Card key={method.id} className="p-4">
+            <Card key={method.id} className={`w-[1026px] ${expandedMethod === method.id ? "min-h-[72px]" : "h-[72px]"} p-4 pb-4 bg-[#FEFEFE] ${expandedMethod === method.id ? '' : ''}`} style={{ 
+              boxShadow: expandedMethod === method.id ? '0 4px 20px rgba(219, 8, 110, 0.19)' : 'none'
+            }}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 ${method.color} rounded-full flex items-center justify-center`}>
-                    <Image
-                      src={method.logo || "/placeholder.svg"}
-                      alt={method.type}
-                      width={24}
-                      height={24}
-                      className="rounded"
-                    />
-                  </div>
+                  <Image
+                    src={method.logo || "/placeholder.svg"}
+                    alt={method.type}
+                    width={32}
+                    height={32}
+                    className="rounded"
+                  />
                   <div>
                     <p className="font-medium text-gray-900">{method.name}</p>
                     <p className="text-sm text-gray-600">{method.time}</p>

@@ -19,6 +19,7 @@ export default function HomePage() {
     contestName: string
   } | null>(null)
 
+
   const handleConcursarClick = (gameId: string, gameTitle: string, gameType: "Animalitos" | "Concursos") => {
     // Simulate selection of options for the modal
     // In a real app, you'd get these from user interaction on the game card
