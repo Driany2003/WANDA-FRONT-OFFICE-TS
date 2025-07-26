@@ -25,11 +25,30 @@ export function DepositForm() {
     message: ''
   })
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
-  const [showAmountTooltip, setShowAmountTooltip] = useState(false)
-  const [showFileTooltip, setShowFileTooltip] = useState(false)
+  const [showYapeAmountTooltip, setShowYapeAmountTooltip] = useState(false)
+  const [showYapeFileTooltip, setShowYapeFileTooltip] = useState(false)
+  const [showPlinAmountTooltip, setShowPlinAmountTooltip] = useState(false)
+  const [showPlinFileTooltip, setShowPlinFileTooltip] = useState(false)
 
   const toggleMethod = (method: string) => {
-    setExpandedMethod(expandedMethod === method ? null : method)
+    if (expandedMethod === method) {
+      // Cerrar la sección y todos los tooltips
+      setExpandedMethod(null)
+      setShowYapeAmountTooltip(false)
+      setShowYapeFileTooltip(false)
+      setShowPlinAmountTooltip(false)
+      setShowPlinFileTooltip(false)
+    } else {
+      // Abrir nueva sección y cerrar tooltips de la otra sección
+      setExpandedMethod(method)
+      if (method === "yape") {
+        setShowPlinAmountTooltip(false)
+        setShowPlinFileTooltip(false)
+      } else if (method === "plin") {
+        setShowYapeAmountTooltip(false)
+        setShowYapeFileTooltip(false)
+      }
+    }
   }
 
   const handleAmountSelect = (amount: string) => {
@@ -102,14 +121,24 @@ export function DepositForm() {
     setShowConfirmationModal(false)
   }
 
-  const toggleAmountTooltip = () => {
-    setShowAmountTooltip(!showAmountTooltip)
-    setShowFileTooltip(false)
+  const toggleYapeAmountTooltip = () => {
+    setShowYapeAmountTooltip(!showYapeAmountTooltip)
+    setShowYapeFileTooltip(false)
   }
 
-  const toggleFileTooltip = () => {
-    setShowFileTooltip(!showFileTooltip)
-    setShowAmountTooltip(false)
+  const toggleYapeFileTooltip = () => {
+    setShowYapeFileTooltip(!showYapeFileTooltip)
+    setShowYapeAmountTooltip(false)
+  }
+
+  const togglePlinAmountTooltip = () => {
+    setShowPlinAmountTooltip(!showPlinAmountTooltip)
+    setShowPlinFileTooltip(false)
+  }
+
+  const togglePlinFileTooltip = () => {
+    setShowPlinFileTooltip(!showPlinFileTooltip)
+    setShowPlinAmountTooltip(false)
   }
 
   return (
@@ -220,12 +249,12 @@ export function DepositForm() {
                       <h4 className="ml-2 text-lg font-semibold text-gray-900">Monto de recarga</h4>
                       <div className="relative">
                         <button
-                          onClick={toggleAmountTooltip}
+                          onClick={toggleYapeAmountTooltip}
                           className="cursor-pointer"
                         >
                           <WarningIcon size={16} />
                         </button>
-                        {showAmountTooltip && (
+                        {showYapeAmountTooltip && (
                           <div className="absolute bottom-8 left-0 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-3 whitespace-nowrap">
                             <div className="relative">
                               <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-l border-b border-gray-200 transform rotate-45 z-10"></div>
@@ -323,12 +352,12 @@ export function DepositForm() {
                       <h4 className="ml-2 text-lg font-semibold text-gray-900">Constancia de recarga</h4>
                       <div className="relative">
                         <button
-                          onClick={toggleFileTooltip}
+                          onClick={toggleYapeFileTooltip}
                           className="cursor-pointer"
                         >
                           <WarningIcon size={16} />
                         </button>
-                        {showFileTooltip && (
+                        {showYapeFileTooltip && (
                           <div className="absolute bottom-8 left-0 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-3 whitespace-nowrap">
                             <div className="relative">
                               <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-l border-b border-gray-200 transform rotate-45 z-10"></div>
@@ -556,12 +585,12 @@ export function DepositForm() {
                       <h4 className="ml-2 text-lg font-semibold text-gray-900">Monto de recarga</h4>
                       <div className="relative">
                         <button
-                          onClick={toggleAmountTooltip}
+                          onClick={togglePlinAmountTooltip}
                           className="cursor-pointer"
                         >
                           <WarningIcon size={16} />
                         </button>
-                        {showAmountTooltip && (
+                        {showPlinAmountTooltip && (
                           <div className="absolute bottom-8 left-0 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-3 whitespace-nowrap">
                             <div className="relative">
                               <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-l border-b border-gray-200 transform rotate-45 z-10"></div>
@@ -657,16 +686,16 @@ export function DepositForm() {
                       <h4 className="ml-2 text-lg font-semibold text-gray-900">Constancia de recarga</h4>
                       <div className="relative">
                         <button
-                          onClick={toggleFileTooltip}
+                          onClick={togglePlinFileTooltip}
                           className="cursor-pointer"
                         >
                           <WarningIcon size={16} />
                         </button>
-                        {showFileTooltip && (
+                        {showPlinFileTooltip && (
                           <div className="absolute bottom-8 left-0 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-3 whitespace-nowrap">
                             <div className="relative">
-                              <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-l border-b border-gray-200 transform rotate-45"></div>
-                              <p className="text-[12px] font-medium text-[#777777]">
+                              <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-l border-b border-gray-200 transform rotate-45 z-10"></div>
+                              <p className="text-[12px] font-medium text-[#777777] relative z-20">
                                 Archivos <span className="text-[#333333]">JPG, PNG</span> / Máx <span className="text-[#333333]">40 MB</span>
                               </p>
                             </div>

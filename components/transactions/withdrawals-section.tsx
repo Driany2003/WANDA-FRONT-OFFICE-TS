@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { RotateCcw } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { WCIcon } from "@/components/icons/header-icons"
 
 const WITHDRAWAL_DATA = [
   {
@@ -40,19 +41,19 @@ export function WithdrawalsSection() {
           <table className="w-full">
             <thead className="bg-[#FEFEFE]" style={{ boxShadow: '0 2px 10px rgba(219, 8, 110, 0.08)' }}>
               <tr>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Fecha
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Plataforma
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Número
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
-                  Retiro
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
+                  Retiros
                 </th>
-                <th className="px-6 py-3 text-center text-base font-medium text-[#1C1C1C] uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-[16px] font-medium text-[#1C1C1C] uppercase tracking-wider">
                   Estado
                 </th>
               </tr>
@@ -66,25 +67,22 @@ export function WithdrawalsSection() {
                     borderBottom: index < WITHDRAWAL_DATA.length - 1 ? '1px solid #A4A4A4' : 'none'
                   }}
                 >
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-700 text-center">{transaction.fecha}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-700 text-center">{transaction.plataforma}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-normal text-gray-700 text-center">{transaction.numero}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-[14px] font-normal text-[#333333] text-center">{transaction.fecha}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-[14px] font-normal text-[#333333] text-center">{transaction.plataforma}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-[14px] font-normal text-[#333333] text-center">{transaction.numero}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-center">
                     <div className="flex justify-center items-center gap-2">
-                      <Badge variant="outline" className="bg-yellow-100 text-yellow-800 border-yellow-200 text-xs">
-                        WC
-                      </Badge>
-                      <span className="text-sm font-normal text-gray-700">{transaction.retiro}</span>
+                      <WCIcon />
+                      <span className="text-[14px] font-normal text-[#333333]">{transaction.retiro}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center">
                     <div className="flex justify-center">
                       <Badge 
-                        variant="outline" 
                         className={
                           transaction.estado === "Aprobado" 
-                            ? "bg-purple-600 text-white border-purple-600" 
-                            : "bg-purple-50 text-purple-700 border-purple-200"
+                            ? "bg-[#6137E5] text-[#FBFBFB] border border-[#6137E5] hover:bg-[#6137E5] hover:text-[#FBFBFB] hover:border-[#6137E5]" 
+                            : "bg-[#FBFBFB] text-[#6137E5] border border-[#6137E5] hover:bg-[#FBFBFB] hover:text-[#6137E5] hover:border-[#6137E5]"
                         }
                       >
                         {transaction.estado}
